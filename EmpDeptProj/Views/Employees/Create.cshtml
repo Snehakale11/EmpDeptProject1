@@ -1,0 +1,51 @@
+﻿@model EmpDeptProject.Models.Models.Employee
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Add Employee Details</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="EmpName"></label>
+            <input asp-for="EmpName" class="form-control" />
+           <span asp-validation-for="EmpName" class="text-danger"></span>
+            @*@Html.ValidationMessageFor(m=>m.CategoryName,"Category name cannot be more than 20 characters.")*@
+
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Salary"></label>
+            <input asp-for="Salary" class="form-control" />
+        </div>
+
+        @Html.LabelFor(model => model.DeptId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col md-10">
+            
+            @Html.DropDownListFor(model=>model.DeptId,(SelectList)ViewBag.DeptId,new{@class="form-control"})
+        </div>
+
+        @*<div class="mb-3">
+            <label asp-for="DeptId">Department Id</label>
+            <input asp-for="DeptId" class="form-control" />
+        </div>*@
+        <div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        
+        <a asp-controller="Employees" asp-action="Index"
+           class="btn btn-secondary" style="width:150px">Back</a>
+        </div>
+
+    </div>
+
+</form>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
+
+

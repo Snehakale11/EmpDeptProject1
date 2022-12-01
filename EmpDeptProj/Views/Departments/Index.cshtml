@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EmpDeptProject.Models.Models.Department>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+
+        <div class=" col-6">
+            <h2 class="text-primary">Department Details</h2>
+        </div>
+        <div class=" col-6 text-end">
+
+            <a asp-controller="Departments" asp-action="create" class="btn btn-primary"><i class="bi bi-plus"></i>Add Department</a>
+        </div>
+
+    </div>
+</div>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+
+            <th>
+
+                Department Id
+            </th>
+            <th>
+                Department Name
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.DeptId </td>
+                <td>
+                    @c.DeptName
+                </td>
+
+
+
+                <td>
+                    <div>
+                        <a asp-controller="Departments" asp-action="Edit" asp-route-deptId="@c.DeptId" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                    </div>
+                <td>
+
+
+                    <div>
+                        <a asp-controller="Departments" asp-action="Delete" asp-route-id="@c.DeptId" class="btn btn-outline-danger"><i class="bi  bi-trash"></i></a>
+                    </div>
+                </td>
+
+                </td>
+
+
+
+
+            </tr>
+
+
+
+
+        }
+    </tbody>
+
+</table>
+
+
